@@ -32,7 +32,6 @@ public class Main {
         System.out.println("3 - Сверить отчёты");
         System.out.println("4 - Вывести информацию о всех месячных отчётах");
         System.out.println("5 - Вывести информацию о годовом отчёте");
-        System.out.println("Выход");
     }
 
     public static void selectAction(Scanner scanner, int command) {
@@ -90,6 +89,7 @@ public class Main {
                 System.out.println("2. Средный расход в этом месяце составил " + yearly.CalculateAverageExpenses());
                 System.out.println("3. Средный доход в этом месяце составил " + yearly.CalculateAverageIncome());
             }
+        } else if (command == 1234) {
         } else {
             System.out.println("Такой команды нету,введите снова.");
         }
