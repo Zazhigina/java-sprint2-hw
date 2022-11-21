@@ -74,7 +74,7 @@ public class Main {
 
                     System.out.println("1.Самая большая трата: " + month.GetMaxIncome(m) + " в категории " +
                             month.nameMaxI);
-                    System.out.println("2. Самая большая трата: " + month.GetMaxExpenses(m) + " в категории " +
+                    System.out.println("2. Самый большой доход: " + month.GetMaxExpenses(m) + " в категории " +
                             month.nameMaxE);
                 }
             }
