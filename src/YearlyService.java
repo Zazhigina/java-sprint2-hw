@@ -1,4 +1,4 @@
-public class CalculationsYearlyReportMonth {
+public class YearlyService {
 
     int sumExpensesYearly(int month, YearlyReport reportY) {
         YearlyReportMonth oneMonthData = reportY.monthsData.get(month);

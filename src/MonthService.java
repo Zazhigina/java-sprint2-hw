@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
-public class CalculationsMonth {
-
-
+public class MonthService {
     String GetNameMonth(int month) {
         String name = "Декабрь";
 
@@ -33,40 +31,19 @@ public class CalculationsMonth {
         return name;
     }
 
-    int GetMaxIncome(int month, MonthlyReport reportM) {
-        int maxIncome = 0;
-        ArrayList<Month> oneMonthData = reportM.monthly.get(month);
-        for (Month income : oneMonthData) {
-            if (income.isExpense(income)) {
-                if (income.getPriceIncomeAndExpenses(income) > maxIncome) {
-                    maxIncome = maxIncome + income.getPriceIncomeAndExpenses(income);
-                  //  nameMaxI = income.getName(income);
-                }
-            }
-        }
-        return maxIncome;
+    Month GetMonthlyMaxIncome(int month, MonthlyReport reportM) {
+        return getMonthlyMaxByExpense2(month, reportM, true);
     }
 
-    int GetMaxExpenses(int month, MonthlyReport reportM) {
-        int maxExpenses = 0;
-
-        ArrayList<Month> oneMonthData = reportM.monthly.get(month);
-        for (Month expense : oneMonthData) {
-            if (!expense.isExpense(expense)) {
-                if (expense.getPriceIncomeAndExpenses(expense) > maxExpenses) {
-                    maxExpenses = maxExpenses + expense.getPriceIncomeAndExpenses(expense);
-                  //  nameMaxE = expense.getName(expense);
-                }
-            }
-        }
-        return maxExpenses;
+    Month GetMaxExpenses(int month, MonthlyReport reportM) {
+        return getMonthlyMaxByExpense2(month, reportM, false);
     }
 
     int sumExpensesMonthly(int month, MonthlyReport reportM) {
         int sum = 0;
         for (Month value : reportM.monthly.get(month)) {
-            if (value.isExpense(value)) {
-                sum = sum + value.getPriceIncomeAndExpenses(value);
+            if (value.isExpense()) {
+                sum = sum + value.getPriceIncomeAndExpenses();
             }
         }
         return sum;
@@ -75,12 +52,25 @@ public class CalculationsMonth {
     int sumIncomeMonthly(int month, MonthlyReport reportM) {
         int sum = 0;
         for (Month value : reportM.monthly.get(month)) {
-            if (!value.isExpense(value)) {
-                sum = sum + value.getPriceIncomeAndExpenses(value);
+            if (!value.isExpense()) {
+                sum = sum + value.getPriceIncomeAndExpenses();
             }
         }
         return sum;
     }
 
+    Month getMonthlyMaxByExpense2(int month, MonthlyReport reportM, boolean isExpense) {
+        Month maxExpenses = null;
+
+        ArrayList<Month> oneMonthData = reportM.monthly.get(month);
+        for (Month expense : oneMonthData) {
+            if (expense.isExpense() == isExpense) {
+                if (null == maxExpenses || expense.getPriceIncomeAndExpenses() > maxExpenses.getPriceIncomeAndExpenses()) {
+                    maxExpenses = expense;
+                }
+            }
+        }
+        return maxExpenses;
+    }
 }
 
