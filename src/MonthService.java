@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class MonthService {
-    String GetNameMonth(int month) {
+    String getNameMonth(int month) {
         String name = "Декабрь";
 
         if (month == 1) {
@@ -31,12 +31,12 @@ public class MonthService {
         return name;
     }
 
-    Month GetMonthlyMaxIncome(int month, MonthlyReport reportM) {
-        return getMonthlyMaxByExpense2(month, reportM, true);
+    Month getMonthlyMaxIncome(int month, MonthlyReport reportM) {
+        return getMonthlyMaxByExpense(month, reportM, true);
     }
 
-    Month GetMaxExpenses(int month, MonthlyReport reportM) {
-        return getMonthlyMaxByExpense2(month, reportM, false);
+    Month getMaxExpenses(int month, MonthlyReport reportM) {
+        return getMonthlyMaxByExpense(month, reportM, false);
     }
 
     int sumExpensesMonthly(int month, MonthlyReport reportM) {
@@ -59,7 +59,7 @@ public class MonthService {
         return sum;
     }
 
-    Month getMonthlyMaxByExpense2(int month, MonthlyReport reportM, boolean isExpense) {
+    Month getMonthlyMaxByExpense(int month, MonthlyReport reportM, boolean isExpense) {
         Month maxExpenses = null;
 
         ArrayList<Month> oneMonthData = reportM.monthly.get(month);

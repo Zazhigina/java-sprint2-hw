@@ -6,9 +6,9 @@ import java.util.HashMap;
 public class YearlyReport {
     public HashMap<Integer, YearlyReportMonth> monthsData = new HashMap<>();
 
-    public YearlyReport(String path) {
-
-        String content = readFileContentsOrNull(path); //
+    public YearlyReport() {
+        String yearPath = "resources/y.2021.csv";
+        String content = readFileContentsOrNull(yearPath); //
         if (content == null) {
             return;
         } else {

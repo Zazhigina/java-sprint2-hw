@@ -5,19 +5,22 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        ReportManager reportManager = new ReportManager();
         while (true) {
 
             printMenu();
 
             int command = scanner.nextInt();
 
-            selectAction(command,reportManager);
+            selectAction(command);
             if (command == 1234) {
+
+                System.out.println("Выполняется завершение программы...");
                 System.out.println("Программа завершена");
+
                 break;
             }
         }
+
     }
 
     public static void printMenu() {
@@ -30,24 +33,24 @@ public class Main {
         System.out.println("5 - Вывести информацию о годовом отчёте");
     }
 
-    public static void selectAction(int command,ReportManager reportManager) {
-
+    public static void selectAction(int command) {
+        ReportManager reportManager = new ReportManager();
         if (command == 1) {
             reportManager.readFileMonthly();
             System.out.println("Отсчет за месяц считан.");
         } else if (command == 2) {
-            reportManager.readFileYearly("resources/y.2021.csv");
+            reportManager.readFileYearly();
             System.out.println("Отсчет за год считан.");
         } else if (command == 3) {
-            reportManager.checkingFiles();
+            reportManager.checkFiles();
         } else if (command == 4) {
             reportManager.outputInformationMonthly();
         } else if (command == 5) {
             reportManager.outputInformationYearly();
-        } else if (command == 1234) {
-            System.out.println("Выполняется завершение программы...");
+
         } else {
             System.out.println("Такой команды нету,введите снова.");
+
         }
 
     }

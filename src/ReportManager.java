@@ -17,11 +17,11 @@ public class ReportManager {
         reportM = new MonthlyReport();
     }
 
-    void readFileYearly(String path) {
-        reportY = new YearlyReport(path);
+    void readFileYearly() {
+        reportY = new YearlyReport();
     }
 
-    void checkingFiles() {
+    void checkFiles() {
         if (reportY == null || reportM == null) {
             System.out.println("Файлы еще не считаны! Сначала считайте все отчеты по месяцам и годовой.");
         } else {
@@ -47,10 +47,10 @@ public class ReportManager {
             System.out.println("Файлы еще не считаны! Сначала считайте все отчеты по месяцам ");
         } else {
             for (int m = 1; m <= MONTHS_COUNT; m++) {
-                System.out.println(monthService.GetNameMonth(m));
+                System.out.println(monthService.getNameMonth(m));
 
-                Month monthlyMaxIncome = monthService.GetMonthlyMaxIncome(m, reportM);
-                Month monthlyMaxExpenses = monthService.GetMaxExpenses(m, reportM);
+                Month monthlyMaxIncome = monthService.getMonthlyMaxIncome(m, reportM);
+                Month monthlyMaxExpenses = monthService.getMaxExpenses(m, reportM);
 
                 if (null == monthlyMaxIncome || null == monthlyMaxExpenses) {
                     System.out.println("Данные по выбранному месяцу отсутствуют");
